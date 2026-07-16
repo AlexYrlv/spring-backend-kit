@@ -13,3 +13,5 @@ build/
 
 # Env
 .env
+.claude/
+.claude/
