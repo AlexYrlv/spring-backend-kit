@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: sample-service
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+
+server:
+  shutdown: graceful
