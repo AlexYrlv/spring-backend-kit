@@ -30,6 +30,11 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
+// The boot jar is the artifact; the plain jar only confuses Dockerfile globs
+tasks.named<Jar>("jar") {
+    enabled = false
+}
+
 tasks.withType<Test> {
     useJUnitPlatform()
     // Ryuk (the Testcontainers reaper) cannot start on colima-style local
