@@ -1,0 +1,39 @@
+version: "3"
+
+tasks:
+  build:
+    desc: Build and test everything
+    cmds:
+      - ./gradlew build
+
+  test:
+    desc: Run all tests
+    cmds:
+      - ./gradlew test
+
+  server:
+    desc: Run sample-service locally (starts PostgreSQL in Docker first)
+    cmds:
+      - task: db
+      - ./gradlew :sample-service:bootRun
+
+  db:
+    desc: Start local PostgreSQL only
+    cmds:
+      - docker compose -f sample-service/docker-compose.yml up -d --wait postgres
+
+  up:
+    desc: Build the jar and start the full stack in Docker
+    cmds:
+      - ./gradlew :sample-service:bootJar
+      - docker compose -f sample-service/docker-compose.yml up -d --build --wait
+
+  down:
+    desc: Stop the stack
+    cmds:
+      - docker compose -f sample-service/docker-compose.yml down
+
+  logs:
+    desc: Tail application logs
+    cmds:
+      - docker compose -f sample-service/docker-compose.yml logs -f app
