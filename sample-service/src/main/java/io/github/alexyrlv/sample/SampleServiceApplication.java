@@ -1,4 +1,4 @@
-package io.github.alexyrlv.sample_service;
+package io.github.alexyrlv.sample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SampleServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SampleServiceApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(SampleServiceApplication.class, args);
+    }
 }
