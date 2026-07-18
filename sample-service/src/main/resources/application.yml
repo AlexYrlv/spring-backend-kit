@@ -3,6 +3,18 @@ spring:
     name: sample-service
   lifecycle:
     timeout-per-shutdown-phase: 30s
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/sample}
+    username: ${DB_USER:sample}
+    password: ${DB_PASSWORD:sample}
+    hikari:
+      initialization-fail-timeout: 20000
+  flyway:
+    connect-retries: 10
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
 
 server:
   shutdown: graceful
